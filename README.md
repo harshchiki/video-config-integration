@@ -1,10 +1,10 @@
 # Video config exchange contract
-Between iframe loading video and parent HTML containing the iframe.
-Parent and child communicate over `window.postMessage` API. It is the child's responsibility to get the video configuration from the parent.
-The responsibility lying with the child, takes care of cases when lazy loading of iframe could happen based on UX.
+* Between iframe loading video and page's HTML containing the iframe.
+* Page and video player (HTML page) communicate over `window.postMessage` API. It is the video player HTML's responsibility to get the video configuration from the parent.
+* The responsibility lying with the video player, takes care of cases when lazy loading of iframe could happen based on UX.
 
 1. Page registers a listener to receive message from child iframes.
-2. Page on receiving the message POSTs to the source iframe the video configuration.
+2. Page on receiving the message, sends a message (via postMessage API) to the source iframe the video configuration.
 
 # Videojs config options supported
 https://videojs.com/guides/options
