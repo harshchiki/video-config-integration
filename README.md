@@ -3,11 +3,8 @@ Between iframe loading video and parent HTML containing the iframe.
 Parent and child communicate over `window.postMessage` API. It is the child's responsibility to get the video configuration from the parent.
 The responsibility lying with the child, takes care of cases when lazy loading of iframe could happen based on UX.
 
-1. Parent registers a listener to receive message from child iframes.
-2. Child registers a listener to receive message from parent to get the video configuration.
-3. Child on load, shall POST message to parent, and wait for 1ms. Parent handles it in the listener created in (1).
-4. Parent on receiving the message POSTs to the source iframe the video configuration. Child handles it in the listener created in (2).
-5. Child sets up the videosjs object accordingly.
+1. Page registers a listener to receive message from child iframes.
+2. Page on receiving the message POSTs to the source iframe the video configuration.
 
 # Videojs config options supported
 https://videojs.com/guides/options
@@ -29,7 +26,7 @@ var videoConfig = {
 }
 ```
 
-## Example: Code in parent
+## Example: Code on the page (on which videos are added)
 ```javascript
 <script>
     var videoConfig = {
