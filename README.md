@@ -43,3 +43,66 @@ var videoConfig = {
     });
 </script>
 ```
+
+# Implementing video events
+Consumer HTML to implement `window.addEventListener("message"..`
+```javascript
+window.addEventListener("message", function (event) {
+    if(event.data.type === "embedded-video-player-event") {
+        switch(event.data.name) {
+            case 'video-playing': // `playing` event as fired from video player
+                console.log('[parent] [playing] ' + event.data.name + ' for ' + event.data.videoId + ' ' + Date.now());
+                break;
+            case 'video-play': // `play` event as fired from video player
+                console.log('[parent] [play] ' + event.data.name + ' for ' + event.data.videoId + ' ' + Date.now());
+                break;
+            case 'video-ended': // `ended` event as fired from video player
+                console.log('[parent] [ended] ' + event.data.name + ' for ' + event.data.videoId + ' ' + Date.now());
+                break;
+            case 'video-loadedmetadata': // `loadedmetadata` event as fired from video player
+                console.log('[parent] [loadedmetadata] ' + event.data.name + ' for ' + event.data.videoId + ' ' + Date.now());
+                break;
+            default:
+                break;
+        }
+    }
+});
+```
+
+## Payload of the event, posted by the video-player
+The `videoAssetId` in the event payloads below would be the video asset ID. (as ingested in delivery tier)
+event: `playing`
+```javascript
+{
+    name: 'video-playing',
+    type: 'embedded-video-player-event',
+    videoId: videoAssetId
+};
+```
+
+event: `play`
+```javascript
+{
+    name: 'video-play',
+    type: 'embedded-video-player-event',
+    videoId: videoAssetId
+};
+```
+
+event: `loadedmetadata`
+```javascript
+{
+    name: 'video-loadedmetadata',
+    type: 'embedded-video-player-event',
+    videoId: videoAssetId
+};
+```
+
+event: `ended`
+```javascript
+{
+    name: 'video-ended',
+    type: 'embedded-video-player-event',
+    videoId: videoAssetId
+};
+```
