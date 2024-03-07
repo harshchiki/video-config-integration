@@ -33,13 +33,11 @@ var videoConfig = {
         "autoplay": "any"
     };
     window.addEventListener("message", function (event) {
-        switch(event.data) {
-            case "video-config":
+        window.addEventListener("message", function (event) {
+            if(event.data.name === "video-config") {
                 event.source.window.postMessage(JSON.stringify(videoConfig), '*');
-                break;
-            default:
-                break;
-        }
+            }
+        });
     });
 </script>
 ```
