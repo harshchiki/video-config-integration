@@ -41,6 +41,15 @@ var videoConfig = {
     });
 </script>
 ```
+The event payload is
+```
+{
+    name: 'video-config',
+    type: 'embedded-video-player-event',
+    videoId: <video-asset-id> 
+}
+```
+The `videoId` can be used to unqiuely identify the player instance on the page, as the one playing the video. (Please note, if you have multiple players playing the same video, then this will not help you distinguish the video player)
 
 # Implementing video events
 Consumer HTML to implement `window.addEventListener("message"..`
