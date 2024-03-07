@@ -11,12 +11,8 @@
             "autoplay": "any" // refer https://videojs.com/guides/options/#autoplay
         };
         window.addEventListener("message", function (event) {
-            switch (event.data) {
-                case "video-config":
-                    event.source.window.postMessage(JSON.stringify(videoConfig), '*');
-                    break;
-                default:
-                    break;
+            if(event.data.name === "video-config") {
+                event.source.window.postMessage(JSON.stringify(videoConfig), '*');
             }
         });
     </script>
