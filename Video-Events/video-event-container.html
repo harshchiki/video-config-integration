@@ -16,7 +16,6 @@
             };
 
             if (event.data && event.data.name === "video-config") {
-                // videoConfigSent = true;
                 alert("Sending video configuration to the video player..");
                 event.source.window.postMessage(JSON.stringify(videoConfig), '*');
             }
