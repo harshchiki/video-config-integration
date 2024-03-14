@@ -16,22 +16,24 @@
             };
 
             if (event.data && event.data.name === "video-config") {
-                event.source.window.postMessage(JSON.stringify(videoConfig), '*');
+                if(event.data.videoId === 'urn:aaid:aem:35d69126-91f1-446f-aa88-e0771a0fd992') {
+                    event.source.window.postMessage(JSON.stringify(videoConfig), '*');
+                }
             }
 
             if (event.data.type === "embedded-video-player-event") {
                 switch (event.data.name) {
                     case 'video-playing': // `playing` event as fired from video player
-                        alert(JSON.stringify(event.data, null, 2));
+                        console.log(JSON.stringify(event.data, null, 2));
                         break;
                     case 'video-play': // `play` event as fired from video player
-                        alert(JSON.stringify(event.data, null, 2));
+                        console.log(JSON.stringify(event.data, null, 2));
                         break;
                     case 'video-ended': // `ended` event as fired from video player
-                        alert(JSON.stringify(event.data, null, 2));
+                        console.log(JSON.stringify(event.data, null, 2));
                         break;
                     case 'video-loadedmetadata': // `loadedmetadata` event as fired from video player
-                        alert(JSON.stringify(event.data, null, 2));
+                        console.log(JSON.stringify(event.data, null, 2));
                         break;
                     default:
                         break;
@@ -40,9 +42,14 @@
         });
 
     </script>
-    <iframe width="80%" height="80%"
+    <iframe width="30%" height="30%"
         src="https://delivery-p107394-e1241111.adobeaemcloud.com/adobe/assets/urn:aaid:aem:1d7f7357-72b2-48fb-91fb-5f2aa45a826c/play?accept-experimental">
     </iframe>
+
+    <iframe width="30%" height="30%" src="https://delivery-p107394-e1241111.adobeaemcloud.com/adobe/assets/urn:aaid:aem:5760d3a2-dfaf-4b76-9ac2-139fc8db5f27/play?accept-experimental">
+    </iframe>
+
+    <iframe width="30%" height="30%" src="https://delivery-p107394-e1241111.adobeaemcloud.com/adobe/assets/urn:aaid:aem:35d69126-91f1-446f-aa88-e0771a0fd992/play?accept-experimental=1"></iframe>
 </body>
 
 </html>
