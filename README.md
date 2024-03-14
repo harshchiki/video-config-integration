@@ -35,6 +35,10 @@ var videoConfig = {
     window.addEventListener("message", function (event) {
         window.addEventListener("message", function (event) {
             if(event.data.name === "video-config") {
+                // the video player would not be waiting for more than 3ms for getting this config.
+                // In case a debug point, or an alert or some other intensive operation is carried out, 
+                // at this line, even if the config is passed, it would not be respected.
+                // We encourage to have the config, ready on this page' load (the app which integrates the videos)
                 event.source.window.postMessage(JSON.stringify(videoConfig), '*');
             }
         });
