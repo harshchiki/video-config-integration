@@ -6,13 +6,14 @@
 1. Page registers a listener to receive message from child iframes.
 2. Page on receiving the message, sends a message (via postMessage API) to the source iframe the video configuration.
 
-# Videojs config options supported
+# Config options supported
 https://videojs.com/guides/options
 ```javascript
 var videoConfig = {
     poster: "<image URL>", // (videojs option) this displays and is called for only when auto play is false.
     autoplay: "any", // (videojs option) 
     muted: true, // (videojs option) ensures the video plays muted. false does not guarantee playback with sound
+    loo: true, // (videojs option) ensures the video plays in loop
     controlBar: { // (videojs option) controls visibility of options in the control bar
         playToggle: true, // (videojs option) play pause button
         remainingTimeDisplay: true, // (videojs option) 
